@@ -1,6 +1,4 @@
-// This code can be run in a separate script or MongoDB shell
 const { MongoClient } = require('mongodb');
-
 async function main() {
     const url = 'mongodb+srv://nicholaskwabenaamo:Lowkeymovement02@cluster.8wmqd.mongodb.net/?retryWrites=true&w=majority&appName=Cluster';
     const client = new MongoClient(url);
@@ -33,7 +31,7 @@ async function main() {
             contactText: "Feel free to reach out!"
         };
 
-        // Insert the sample data into the collection
+        
         const result = await collection.insertOne(professionalData);
         console.log(`New listing created with the following id: ${result.insertedId}`);
     } catch (error) {
