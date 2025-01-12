@@ -16,7 +16,7 @@ router.get('/', async (req, res) => {
 // GET a single contact
 router.get('/:id', async (req, res) => {
     try {
-        const collection = getCollection('contacts');
+        const collection = getCollection('/id');
         const contact = await collection.findOne({ _id: new ObjectId(req.params.id) });
         if (!contact) return res.status(404).json({ message: 'Contact not found' });
         res.json(contact);

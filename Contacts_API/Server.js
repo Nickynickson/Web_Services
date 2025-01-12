@@ -16,7 +16,7 @@ app.use(express.json());
 connectDB();
 
 // Routes
-app.use('/api/contacts', contactsRouter);
+app.use('/contacts', contactsRouter);
 
 // Start the server
 app.listen(PORT, () => {
