@@ -1,0 +1,7 @@
+Get http://localhost:5000/contacts
+
+###get a single contact with id
+GET http://localhost:5000/contacts/6782e230a60d45b11285faf2
+
+###
+POST http://localhost:5000/contacts

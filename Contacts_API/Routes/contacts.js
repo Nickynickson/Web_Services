@@ -1,5 +1,7 @@
 const express = require('express');
 const { getCollection } = require('../Config/DB');
+const { ObjectId } = require('mongodb');
+
 const router = express.Router();
 
 // GET all contacts
@@ -13,11 +15,19 @@ router.get('/', async (req, res) => {
     }
 });
 
+
 // GET a single contact
 router.get('/:id', async (req, res) => {
     try {
-        const collection = getCollection('/id');
-        const contact = await collection.findOne({ _id: new ObjectId(req.params.id) });
+        const collection = getCollection('contacts');
+        const id = req.params.id;
+
+        // Validate ObjectId
+        if (!ObjectId.isValid(id)) {
+            return res.status(400).json({ message: 'Invalid ID format' });
+        }
+
+        const contact = await collection.findOne({ _id: new ObjectId(id) });
         if (!contact) return res.status(404).json({ message: 'Contact not found' });
         res.json(contact);
     } catch (error) {
